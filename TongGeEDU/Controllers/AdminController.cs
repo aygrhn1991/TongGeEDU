@@ -105,7 +105,7 @@ namespace TongGeEDU.Controllers
         {
             return View();
         }
-        public ActionResult CoourseAddView()
+        public ActionResult CourseAddView()
         {
             return View();
         }
@@ -130,7 +130,7 @@ namespace TongGeEDU.Controllers
         }
         public ActionResult Course_Query()
         {
-            var list = entity.tg_collapse;
+            var list = entity.tg_course;
             return Json(list, JsonRequestBehavior.AllowGet);
         }
         public ActionResult CourseSource_Add(int id, string content)

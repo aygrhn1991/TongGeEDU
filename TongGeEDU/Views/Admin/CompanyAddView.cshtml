@@ -14,7 +14,7 @@
     <link href="~/Extensions/Plugins/css/animate.css" rel="stylesheet" />
     <link href="~/Extensions/Plugins/css/style.css" rel="stylesheet" />
 </head>
-<body class="gray-bg">
+<body class="gray-bg" ng-app="app" ng-controller="ctrl">
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-8">
-                                    <a class="btn btn-sm btn-primary" onclick="add()">添 加</a>
+                                    <a class="btn btn-sm btn-primary" ng-click="add()">添 加</a>
                                 </div>
                             </div>
                         </form>
@@ -48,34 +48,12 @@
         </div>
     </div>
     <script src="~/Scripts/jquery-2.2.4.js"></script>
-    <script>
-        function add() {
-            if ($('#url').val() == null || $('#url').val() == '') {
-                alert('URL不能为空');
-                return;
-            }
-            var formData = new FormData();
-            formData.append('file', $('#file')[0].files[0]);
-            formData.append('url', $('#url').val());
-            $.ajax({
-                url: '/Admin/Company_Add',
-                type: 'POST',
-                data: formData,
-                // 告诉jQuery不要去处理发送的数据
-                processData: false,
-                // 告诉jQuery不要去设置Content-Type请求头
-                contentType: false,
-                success: function (d) {
-                    if (d == true) {
-                        alert('添加成功');
-                        $('#url').val('');
-                        $('#file').val('')
-                    } else {
-                        alert('http错误');
-                    }
-                },
-            });
-        }
-    </script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/web/tools.js"></script>
+    <script src="~/Extensions/Plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="~/Extensions/Plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="~/Extensions/Plugins/js/content.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/web/companyaddview.js"></script>
 </body>
 </html>

@@ -158,6 +158,9 @@
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="Scripts\web\collapselinkview.js" />
+    <Content Include="Scripts\web\courseaddview.js" />
+    <Content Include="Scripts\web\companyaddview.js" />
+    <Content Include="Scripts\web\courselistview.js" />
     <Content Include="Scripts\web\companylistview.js" />
     <Content Include="Scripts\web\collapselistview.js" />
     <Content Include="Scripts\web\tools.js" />
@@ -189,7 +192,7 @@
     <Content Include="Views\Admin\CompanyListView.cshtml" />
     <Content Include="Views\Admin\CompanyAddView.cshtml" />
     <Content Include="Views\Admin\CourseListView.cshtml" />
-    <Content Include="Views\Admin\CoourseAddView.cshtml" />
+    <Content Include="Views\Admin\CourseAddView.cshtml" />
     <Content Include="Views\Admin\CourseSourceView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
