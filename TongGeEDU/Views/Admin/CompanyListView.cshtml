@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CompanyListView</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/animate.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/style.css" rel="stylesheet" />
+</head>
+<body class="gray-bg" ng-app="app" ng-controller="ctrl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <a href="/Admin/CompanyAddView" class="btn btn-primary">添加</a>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th style="width:5%;">ID</th>
+                                    <th style="width:30%;">浏览</th>
+                                    <th style="width:60%;">URL</th>
+                                    <th style="width:5%;">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="l in list">
+                                    <td>{{l.id}}</td>
+                                    <td>
+                                        <img src="~/Attachments/company/{{l.filename}}" style="width:100%;height:160px;" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" style="width:100%;" ng-model="l.url"/>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-white btn-sm" ng-click="save(l)"><i class="fa fa-pencil"></i> 保存</button><br />
+                                        <button class="btn btn-danger btn-sm" ng-click="delete(l)"><i class="fa fa-trash"></i> 删除</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-2.2.4.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/web/tools.js"></script>
+    <script src="~/Extensions/Plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="~/Extensions/Plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="~/Extensions/Plugins/js/content.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/web/companylistview.js"></script>
+</body>
+</html>

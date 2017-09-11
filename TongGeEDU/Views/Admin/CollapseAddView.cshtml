@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CollapseAddView</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/animate.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/webuploader/webuploader.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/webuploader/webuploader-demo.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/style.css" rel="stylesheet" />
+</head>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>选择要上传的轮播图片</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="page-container">              
+                            <div id="uploader" class="wu-example">
+                                <div class="queueList">
+                                    <div id="dndArea" class="placeholder">
+                                        <div id="filePicker"></div>
+                                        <p>或将照片拖到这里，单次最多可选300张</p>
+                                    </div>
+                                </div>
+                                <div class="statusBar" style="display:none;">
+                                    <div class="progress">
+                                        <span class="text">0%</span>
+                                        <span class="percentage"></span>
+                                    </div>
+                                    <div class="info"></div>
+                                    <div class="btns">
+                                        <div id="filePicker2"></div>
+                                        <div class="uploadBtn">开始上传</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-2.2.4.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/web/tools.js"></script>
+    <script src="~/Extensions/Plugins/js/content.js"></script>
+    <script src="~/Extensions/Plugins/webuploader/webuploader.js"></script>
+    <script src="~/Extensions/Plugins/webuploader/webuploader-demo.js"></script>
+    <script src="~/Scripts/web/collapse.js"></script>
+</body>
+</html>

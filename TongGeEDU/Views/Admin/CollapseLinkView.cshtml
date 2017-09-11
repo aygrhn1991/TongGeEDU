@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CollapseLinkView</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/animate.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/summernote/summernote.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/summernote/summernote-bs3.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/style.css" rel="stylesheet" />
+</head>
+<body class="gray-bg" ng-app="app" ng-controller="ctrl">
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>文本编辑</h5>
+                        <button id="edit" class="btn btn-primary btn-xs m-l-sm" ng-click="edit()" type="button">编辑</button>
+                        <button id="save" class="btn btn-primary  btn-xs" ng-click="save()" type="button">保存</button>
+                    </div>
+                    <div class="ibox-content" id="eg">
+                        <div class="click2edit wrapper"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-2.2.4.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/web/tools.js"></script>
+    <script src="~/Extensions/Plugins/summernote/summernote.min.js"></script>
+    <script src="~/Extensions/Plugins/summernote/summernote-zh-CN.js"></script>
+    <script src="~/Extensions/Plugins/js/content.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/web/collapselinkview.js"></script>
+</body>
+</html>
