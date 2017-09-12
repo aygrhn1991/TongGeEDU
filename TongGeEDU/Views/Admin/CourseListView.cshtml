@@ -17,6 +17,7 @@
     <style>
         .label {
             margin-right: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -26,14 +27,14 @@
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <a href="/Admin/CourseAddView" class="btn btn-primary">添加</a>
+                        <a href="/Admin/CourseAddEditView?id=0" class="btn btn-primary">添加</a>
                     </div>
                     <div class="ibox-content">
                         <p>
-                            学年：<span class="label">一年级</span><span class="label label-primary">二年级</span>
+                            学年：<span class="label" ng-repeat="g in grades" ng-click="setgrade($event,g)">{{g}}</span>
                         </p>
                         <p>
-                            科目：<span class="label">语文</span><span class="label label-primary">数学</span>
+                            科目：<span class="label" ng-repeat="s in subjects" ng-click="setsubject($event,s)">{{s}}</span>
                         </p>
                         <hr />
                         <table class="table table-striped table-bordered table-hover dataTables-example">
@@ -57,12 +58,12 @@
                                     <td>{{l.title}}</td>
                                     <td>{{l.teacher}}</td>
                                     <td>
-                                        <img src="~/Attachments/collapse/{{l.filename}}" style="width:100%;height:160px;" />
+                                        <img src="~/Attachments/course/{{l.filename}}" style="width:100%;height:160px;" />
                                     </td>
                                     <td>{{l.price}}</td>
                                     <td>
-                                        <a href="/Admin/CollapseLinkView?id={{l.id}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑</a><br />
-                                        <a href="/Admin/CollapseLinkView?id={{l.id}}" class="btn btn-white btn-sm"><i class="fa fa-list"></i> 课程</a><br />
+                                        <a href="/Admin/CourseAddEditView?id={{l.id}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑</a><br />
+                                        <a href="/Admin/CourseSourceView?parentid={{l.id}}" class="btn btn-white btn-sm"><i class="fa fa-list"></i> 课程</a><br />
                                         <button class="btn btn-danger btn-sm" ng-click="delete(l)"><i class="fa fa-trash"></i> 删除</button>
                                     </td>
                                 </tr>

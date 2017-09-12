@@ -1,0 +1,96 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CoourseAddView</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/animate.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/style.css" rel="stylesheet" />
+</head>
+<body class="gray-bg" ng-app="app" ng-controller="ctrl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>添加/编辑课程</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">年级：</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" ng-options="g for g in grades" ng-model="item.grade"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">科目：</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" ng-options="s for s in subjects" ng-model="item.subject"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">标题：</label>
+                                <div class="col-sm-8">
+                                    <input type="text" placeholder="标题" class="form-control" ng-model="item.title">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">教师：</label>
+                                <div class="col-sm-8">
+                                    <input type="text" placeholder="教师" class="form-control" ng-model="item.teacher">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">价格：</label>
+                                <div class="col-sm-8">
+                                    <input type="text" placeholder="价格" class="form-control" ng-model="item.price">
+                                </div>
+                            </div>
+                            <div class="form-group" ng-if="id!=0">
+                                <label class="col-sm-3 control-label"></label>
+                                <div class="col-sm-8">
+                                    <img style="width:200px;height:160px;" src="~/Attachments/course/{{item.filename}}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">封面：</label>
+                                <div class="col-sm-8">
+                                    <input id="file" type="file" accept="image/*" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">简介：</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" style="resize:none;" placeholder="简介" ng-model="item.introduction" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-8">
+                                    <a ng-if="id==0" class="btn btn-sm btn-primary" ng-click="add()">新 增</a>
+                                    <a ng-if="id!=0" class="btn btn-sm btn-primary" ng-click="save()">保 存</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-2.2.4.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/web/tools.js"></script>
+    <script src="~/Extensions/Plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="~/Extensions/Plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="~/Extensions/Plugins/js/content.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/web/courseaddeditview.js"></script>
+</body>
+</html>

@@ -1,10 +1,6 @@
 ﻿var app = angular.module('app', []);
 app.controller('ctrl', function ($scope, $http) {
     $scope.add = function () {
-        if ($('#url').val() == null || $('#url').val() == '') {
-            alert('URL不能为空');
-            return;
-        }
         var formData = new FormData();
         formData.append('file', $('#file')[0].files[0]);
         formData.append('url', $('#url').val());
@@ -19,8 +15,7 @@ app.controller('ctrl', function ($scope, $http) {
             success: function (d) {
                 if (d == true) {
                     alert('添加成功');
-                    $('#url').val('');
-                    $('#file').val('')
+                    self.location.reload();
                 } else {
                     alert('http错误');
                 }

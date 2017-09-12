@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VideoFrame</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/animate.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/css/style.css" rel="stylesheet" />
+    <link href="~/Extensions/Plugins/plyr/plyr.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="player">
+        <video poster="@ViewBag.poster" controls style="height:350px !important;">
+            <source src="@ViewBag.src" type="video/mp4">
+        </video>
+    </div>
+    <script>
+        (function (d, u) {
+            var a = new XMLHttpRequest(),
+                b = d.body
+            // Check for CORS support
+            // If you're loading from same domain, you can remove the if statement
+            if ("withCredentials" in a) {
+                a.open("GET", u, true);
+                a.send();
+                a.onload = function () {
+                    var c = d.createElement("div");
+                    c.setAttribute("hidden", "");
+                    c.innerHTML = a.responseText;
+                    b.insertBefore(c, b.childNodes[0]);
+                }
+            }
+        })(document, "/Extensions/Plugins/plyr/sprite.svg");
+    </script>
+    <script src="~/Extensions/Plugins/plyr/plyr.js"></script>
+    <script>
+        plyr.setup();
+    </script>
+    <script src="~/Scripts/jquery-2.2.4.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/web/tools.js"></script>
+    <script src="~/Extensions/Plugins/js/content.js"></script>
+</body>
+</html>

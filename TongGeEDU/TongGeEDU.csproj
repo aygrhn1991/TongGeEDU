@@ -108,6 +108,9 @@
     <Content Include="Extensions\Plugins\dataTables\sort_asc.png" />
     <Content Include="Extensions\Plugins\dataTables\sort_desc.png" />
     <Content Include="Extensions\Plugins\metisMenu\header-profile.png" />
+    <Content Include="Extensions\Plugins\plyr\plyr.css" />
+    <Content Include="Extensions\Plugins\plyr\plyr.js" />
+    <Content Include="Extensions\Plugins\plyr\sprite.svg" />
     <Content Include="Extensions\Plugins\summernote\summernote-bs3.css" />
     <Content Include="Extensions\Plugins\summernote\summernote-zh-CN.js" />
     <Content Include="Extensions\Plugins\summernote\summernote.css" />
@@ -158,7 +161,8 @@
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="Scripts\web\collapselinkview.js" />
-    <Content Include="Scripts\web\courseaddview.js" />
+    <Content Include="Scripts\web\coursesourceview.js" />
+    <Content Include="Scripts\web\courseaddeditview.js" />
     <Content Include="Scripts\web\companyaddview.js" />
     <Content Include="Scripts\web\courselistview.js" />
     <Content Include="Scripts\web\companylistview.js" />
@@ -192,8 +196,9 @@
     <Content Include="Views\Admin\CompanyListView.cshtml" />
     <Content Include="Views\Admin\CompanyAddView.cshtml" />
     <Content Include="Views\Admin\CourseListView.cshtml" />
-    <Content Include="Views\Admin\CourseAddView.cshtml" />
+    <Content Include="Views\Admin\CourseAddEditView.cshtml" />
     <Content Include="Views\Admin\CourseSourceView.cshtml" />
+    <Content Include="Views\Admin\VideoFrame.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -205,6 +210,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Attachments\collapse\" />
     <Folder Include="Attachments\company\" />
+    <Folder Include="Attachments\course\" />
     <Folder Include="Extensions\Plugins\img\" />
     <Folder Include="Models\" />
   </ItemGroup>

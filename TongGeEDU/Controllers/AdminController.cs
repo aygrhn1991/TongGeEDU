@@ -105,55 +105,116 @@ namespace TongGeEDU.Controllers
         {
             return View();
         }
-        public ActionResult CourseAddView()
+        public ActionResult CourseAddEditView(int id)
         {
             return View();
         }
-        public ActionResult CourseSourceView(int id)
+        public ActionResult CourseSourceView(int parentid)
         {
             return View();
         }
-        public ActionResult Course_Add()
+        public ActionResult VideoFrame(string src, string poster)
+        {
+            ViewBag.src = src;
+            ViewBag.poster = poster;
+            return View();
+        }
+        public ActionResult Course_Add(string grade, string subject, string title, string teacher, double price, string introduction)
         {
             HttpPostedFileBase file = Request.Files[0];
             string filename = Guid.NewGuid().ToString("N") + Path.GetExtension(file.FileName);
-            file.SaveAs(HttpContext.Server.MapPath("~/Attachments/collapse") + "\\" + filename);
-            tg_collapse collapse = new tg_collapse() { filename = filename };
-            entity.tg_collapse.Add(collapse);
+            file.SaveAs(HttpContext.Server.MapPath("~/Attachments/course") + "\\" + filename);
+            tg_course course = new tg_course()
+            {
+                grade = grade,
+                subject = subject,
+                title = title,
+                teacher = teacher,
+                filename = filename,
+                price = price,
+                introduction = introduction,
+            };
+            entity.tg_course.Add(course);
             return Json(entity.SaveChanges() > 0, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Course_Delete(int id)
         {
-            tg_collapse item = entity.tg_collapse.FirstOrDefault(p => p.id == id);
-            entity.tg_collapse.Remove(item);
+            tg_course item = entity.tg_course.FirstOrDefault(p => p.id == id);
+            entity.tg_course.Remove(item);
             return Json(entity.SaveChanges() > 0, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Course_Query()
+        public ActionResult Course_Edit(int id, string grade, string subject, string title, string teacher, double price, string introduction)
         {
-            var list = entity.tg_course;
+            tg_course item = entity.tg_course.FirstOrDefault(p => p.id == id);
+            if (Request.Files.Count != 0)
+            {
+                HttpPostedFileBase file = Request.Files[0];
+                string filename = Guid.NewGuid().ToString("N") + Path.GetExtension(file.FileName);
+                file.SaveAs(HttpContext.Server.MapPath("~/Attachments/course") + "\\" + filename);
+                item.filename = filename;
+            }
+            item.grade = grade;
+            item.subject = subject;
+            item.title = title;
+            item.teacher = teacher;
+            item.price = price;
+            item.introduction = introduction;
+            return Json(entity.SaveChanges() > 0, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Course_Query(string grade, string subject)
+        {
+            IEnumerable<tg_course> list = entity.tg_course;
+            if (!grade.Equals("全部"))
+            {
+                list = list.Where(p => p.grade == grade);
+            }
+            if (!subject.Equals("全部"))
+            {
+                list = list.Where(p => p.subject == subject);
+            }
             return Json(list, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult CourseSource_Add(int id, string content)
+        public ActionResult Course_Query_Item(int id)
         {
-            tg_collapse item = entity.tg_collapse.FirstOrDefault(p => p.id == id);
-            item.content = content;
+            var list = entity.tg_course.FirstOrDefault(p => p.id == id);
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult CourseSource_Add(int parentid, int chapter, string title)
+        {
+            HttpPostedFileBase file = Request.Files[0];
+            string filename = Guid.NewGuid().ToString("N") + Path.GetExtension(file.FileName);
+            file.SaveAs(HttpContext.Server.MapPath("~/Attachments/course") + "\\" + filename);
+            tg_course_source course_source = new tg_course_source()
+            {
+                chapter = chapter,
+                parentid = parentid,
+                title = title,
+                filename = filename,
+            };
+            entity.tg_course_source.Add(course_source);
             return Json(entity.SaveChanges() > 0, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult CourseSource_Delete(int id, string content)
+        public ActionResult CourseSource_Delete(int id)
         {
-            tg_collapse item = entity.tg_collapse.FirstOrDefault(p => p.id == id);
-            item.content = content;
+            tg_course_source item = entity.tg_course_source.FirstOrDefault(p => p.id == id);
+            entity.tg_course_source.Remove(item);
             return Json(entity.SaveChanges() > 0, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult CourseSource_Edit(int id, string content)
+        public ActionResult CourseSource_Edit(int id, int chapter, string title)
         {
-            tg_collapse item = entity.tg_collapse.FirstOrDefault(p => p.id == id);
-            item.content = content;
+            tg_course_source item = entity.tg_course_source.FirstOrDefault(p => p.id == id);
+            item.chapter = chapter;
+            item.title = title;
             return Json(entity.SaveChanges() > 0, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult CourseSource_Query(int id)
+        public ActionResult CourseSource_Query(int parentid)
         {
-            tg_collapse item = entity.tg_collapse.FirstOrDefault(p => p.id == id);
+            var list = entity.tg_course_source.Where(p => p.parentid == parentid).OrderBy(p => p.chapter);
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult CourseSource_Query_Item(int id)
+        {
+            tg_course_source item = entity.tg_course_source.FirstOrDefault(p => p.id == id);
             return Json(item, JsonRequestBehavior.AllowGet);
         }
         #endregion
