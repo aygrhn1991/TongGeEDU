@@ -34,28 +34,52 @@ app.controller('ctrl', function ($scope, $http) {
         $scope.state = 'add';
     }
     $scope.add = function () {
+        var xhr = new XMLHttpRequest();
+        var url = "/Admin/CourseSource_Add";
         var formData = new FormData();
         formData.append('file', $('#file')[0].files[0]);
         formData.append('parentid', parentid);
         formData.append('title', $scope.item.title);
         formData.append('chapter', $scope.item.chapter);
-        $.ajax({
-            url: '/Admin/CourseSource_Add',
-            type: 'POST',
-            data: formData,
-            // 告诉jQuery不要去处理发送的数据
-            processData: false,
-            // 告诉jQuery不要去设置Content-Type请求头
-            contentType: false,
-            success: function (d) {
-                if (d == true) {
-                    alert('添加成功');
-                    self.location.reload();
-                } else {
-                    alert('http错误');
-                }
-            },
-        });
+        xhr.open("POST", url);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                alert('上传成功');
+                self.location.reload();
+            } else {
+                alert('http错误');
+            }
+        };
+        xhr.upload.onprogress = function (event) {
+            if (event.lengthComputable) {
+                var complete = (event.loaded / event.total * 100 | 0);
+                var progressbg = document.getElementById('progressbg');
+                progressbg.style.width = complete+'%';
+            }
+        };
+        xhr.send(formData);
+        //var formData = new FormData();
+        //formData.append('file', $('#file')[0].files[0]);
+        //formData.append('parentid', parentid);
+        //formData.append('title', $scope.item.title);
+        //formData.append('chapter', $scope.item.chapter);
+        //$.ajax({
+        //    url: '/Admin/CourseSource_Add',
+        //    type: 'POST',
+        //    data: formData,
+        //    // 告诉jQuery不要去处理发送的数据
+        //    processData: false,
+        //    // 告诉jQuery不要去设置Content-Type请求头
+        //    contentType: false,
+        //    success: function (d) {
+        //        if (d == true) {
+        //            alert('添加成功');
+        //            self.location.reload();
+        //        } else {
+        //            alert('http错误');
+        //        }
+        //    },
+        //});
     }
     $scope.edit = function (e) {
         $http.post('/Admin/CourseSource_Query_Item', {
